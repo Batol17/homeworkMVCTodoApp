@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MvcTodoApp.Models;
-using System.Collections.Generic;//لحتى استخدم multi type شان list 
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MvcTodoApp.Controllers
@@ -38,24 +38,6 @@ namespace MvcTodoApp.Controllers
             return RedirectToAction("Index");
         }
 
-
-            /// <summary>
-            /// تعديل المهمة.
-            /// </summary>
-            [HttpPost]
-            public IActionResult EditTask(int id, string newTitle)
-            {
-                if (!string.IsNullOrEmpty(newTitle))
-                {
-                    var task = tasks.FirstOrDefault(t => t.Id == id);
-                    if (task != null)
-                    {
-                        task.Title = newTitle;
-                    }
-                }
-                return RedirectToAction("Index");
-            }
-
         /// <summary>
         /// تعيين مهمة كمكتملة.
         /// </summary>
@@ -67,5 +49,15 @@ namespace MvcTodoApp.Controllers
                 task.IsComplete = true;
             return RedirectToAction("Index");
         }
+        public IActionResult EditTask(int id, string newTitle)
+{
+var task= tasks.FirstOrDefault(t => t.id == id);
+if (task != null && !string.IsNullOrWhiteSpace(newTitle))
+{
+    task.Title = newTitle;
+}
+return RedirectToAction("index");
+
+}
     }
 }
