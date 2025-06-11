@@ -51,7 +51,7 @@ namespace MvcTodoApp.Controllers
         }
         public IActionResult EditTask(int id, string newTitle)
 {
-var task= tasks.FirstOrDefault(t => t.id == id);
+var task= tasks.FirstOrDefault(t => t.Id == id);
 if (task != null && !string.IsNullOrWhiteSpace(newTitle))
 {
     task.Title = newTitle;
